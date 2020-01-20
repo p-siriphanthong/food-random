@@ -4,21 +4,23 @@ const schema = buildSchema(`
   input FoodInput {
     name: String
     image: String
-    category: ID
     latitude: Float
     longitude: Float
+    category: ID
   }
 
   type FoodCategory {
+    id: ID!
     name: String!
   }
 
   type Food {
+    id: ID!
     name: String!
     image: String!
-    category: FoodCategory!
     latitude: Float!
     longitude: Float!
+    category: FoodCategory!
   }
 
   type Query {
@@ -33,7 +35,7 @@ const schema = buildSchema(`
     updateFoodCategory(id: ID!, name: String!): FoodCategory
     deleteFoodCategory(id: ID!): FoodCategory
     createFood(input: FoodInput!): Food
-    updateFood(id: ID!, input: FoodInput!): Food
+    updateFood(id: ID!, input:  FoodInput!): Food
     deleteFood(id: ID!): Food
   }
 `)

@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const graphqlHTTP = require('express-graphql')
 
@@ -7,6 +8,10 @@ const resolvers = require('./resolvers')
 
 const app = express()
 const PORT = process.env.PORT || 5000
+
+const mongo_db = process.env.MONGO_DB || 'mongodb://localhost/graphqdb'
+mongoose.Promise = global.Promise
+mongoose.connect(mongo_db)
 
 app.use(bodyParser.json())
 
