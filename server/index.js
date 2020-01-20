@@ -1,3 +1,4 @@
+const dotenv = require('dotenv')
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -6,12 +7,16 @@ const graphqlHTTP = require('express-graphql')
 const schema = require('./schema')
 const resolvers = require('./resolvers')
 
+dotenv.config()
+
 const app = express()
 const PORT = process.env.PORT || 5000
 
-const mongo_db = process.env.MONGO_DB || 'mongodb://localhost/graphqdb'
 mongoose.Promise = global.Promise
-mongoose.connect(mongo_db)
+mongoose.connect(process.env.MONGO_DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 app.use(bodyParser.json())
 
