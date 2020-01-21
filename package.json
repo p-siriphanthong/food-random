@@ -1,0 +1,20 @@
+{
+  "name": "food-random",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "repository": "git@github.com:p-siriphanthong/food-random.git",
+  "author": "Punn Siriphanthong <p.siriphanthong@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "cd server && yarn dev",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "cd server && yarn start",
+    "heroku-postbuild-server": "cd server && yarn",
+    "heroku-postbuild-client": "cd client && yarn && yarn build",
+    "heroku-postbuild": "yarn heroku-postbuild-server && yarn heroku-postbuild-client"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.2"
+  }
+}
