@@ -1,4 +1,5 @@
 const path = require('path')
+const cors = require('cors')
 const dotenv = require('dotenv')
 const express = require('express')
 const mongoose = require('mongoose')
@@ -20,13 +21,15 @@ mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
 })
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: resolvers,
-  graphiql: true,
-}))
+    schema: schema,
+    rootValue: resolvers,
+    graphiql: true,
+  }),
+)
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
