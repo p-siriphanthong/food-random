@@ -1,7 +1,7 @@
 const { buildSchema } = require('graphql')
 
 const schema = buildSchema(`
-  input FoodInput {
+  input FoodMenuInput {
     name: String
     image: String
     latitude: Float
@@ -14,7 +14,7 @@ const schema = buildSchema(`
     name: String!
   }
 
-  type Food {
+  type FoodMenu {
     id: ID!
     name: String!
     image: String!
@@ -26,17 +26,17 @@ const schema = buildSchema(`
   type Query {
     getFoodCategory(id: ID!): FoodCategory
     getFoodCategories: [FoodCategory]
-    getFood(id: ID!): Food
-    getFoods: [Food]
+    getFoodMenu(id: ID!): FoodMenu
+    getFoodMenus: [FoodMenu]
   }
 
   type Mutation {
     createFoodCategory(name: String!): FoodCategory
     updateFoodCategory(id: ID!, name: String!): FoodCategory
     deleteFoodCategory(id: ID!): FoodCategory
-    createFood(input: FoodInput!): Food
-    updateFood(id: ID!, input:  FoodInput!): Food
-    deleteFood(id: ID!): Food
+    createFoodMenu(input: FoodMenuInput!): FoodMenu
+    updateFoodMenu(id: ID!, input:  FoodMenuInput!): FoodMenu
+    deleteFoodMenu(id: ID!): FoodMenu
   }
 `)
 

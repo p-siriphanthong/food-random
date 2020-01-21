@@ -24,7 +24,7 @@ mutation createFoodCategory {
 mutation updateFoodCategory {
   updateFoodCategory(
     id: "5e261d1a9e48a07454ba0d63",
-    name: "name 3"
+    name: "category 3"
 	) {
     ...foodCategoryField
   }
@@ -38,7 +38,7 @@ mutation deleteFoodCategory {
 
 ##########################################################
 
-fragment foodField on Food {
+fragment foodMenuField on FoodMenu {
   id
   name
   image
@@ -50,43 +50,43 @@ fragment foodField on Food {
   }
 }
 
-query getFood {
-  getFood(id: "5e26251852f6fa77462fcad8") {
-		...foodField
+query getFoodMenu {
+  getFoodMenu(id: "5e26251852f6fa77462fcad8") {
+		...foodMenuField
   }
 }
 
-query getFoods {
-  getFoods {
-    ...foodField
+query getFoodMenus {
+  getFoodMenus {
+    ...foodMenuField
   }
 }
 
-mutation createFood {
-  createFood(input: {
-    name: "Food 1",
+mutation createFoodMenu {
+  createFoodMenu(input: {
+    name: "Food Menu 1",
     image: "url...",
     latitude: 111.11,
     longitude: -222.22,
     category: "5e261c8791983d740fc8ce18"
   }) {
-    ...foodField
+    ...foodMenuField
   }
 }
 
-mutation updateFood {
-  updateFood(
+mutation updateFoodMenu {
+  updateFoodMenu(
     id: "5e261ffbb019857647b9e1c3",
     input: {
-      name: "Food 2"
+      name: "Food Menu 2"
     }
 	) {
-    ...foodField
+    ...foodMenuField
   }
 }
 
-mutation deleteFood {
-  deleteFood(id: "5e261ffbb019857647b9e1c3") {
-    ...foodField
+mutation deleteFoodMenu {
+  deleteFoodMenu(id: "5e261ffbb019857647b9e1c3") {
+    ...foodMenuField
   }
 }

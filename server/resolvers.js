@@ -1,12 +1,12 @@
 const FoodCategory = require('./models/food-category')
-const Food = require('./models/food')
+const FoodMenu = require('./models/food-menu')
 
 const resolvers = {
   // Food Category
-  getFoodCategory: async ({ id }) => {
+  getFoodMenuCategory: async ({ id }) => {
     return await FoodCategory.findOne({ _id: id })
   },
-  getFoodCategories: async () => {
+  getFoodMenuCategories: async () => {
     return await FoodCategory.find()
   },
   createFoodCategory: async ({ name }) => {
@@ -21,23 +21,23 @@ const resolvers = {
     return await FoodCategory.findOneAndRemove({ _id: id })
   },
 
-  // Food
-  getFood: async ({ id }) => {
-    return await Food.findOne({ _id: id }).populate('category')
+  // Food Menu
+  getFoodMenu: async ({ id }) => {
+    return await FoodMenu.findOne({ _id: id }).populate('category')
   },
-  getFoods: async () => {
-    return await Food.find().populate('category')
+  getFoodMenus: async () => {
+    return await FoodMenu.find().populate('category')
   },
-  createFood: async ({ input }) => {
-    const food = await Food.create(input)
-    return await Food.findOne({ _id: food.id }).populate('category')
+  createFoodMenu: async ({ input }) => {
+    const foodMenu = await FoodMenu.create(input)
+    return await FoodMenu.findOne({ _id: foodMenu.id }).populate('category')
   },
-  updateFood: async ({ id, input }) => {
-    await Food.findOneAndUpdate({ _id: id }, input)
-    return await Food.findOne({ _id: id }).populate('category')
+  updateFoodMenu: async ({ id, input }) => {
+    await FoodMenu.findOneAndUpdate({ _id: id }, input)
+    return await FoodMenu.findOne({ _id: id }).populate('category')
   },
-  deleteFood: async ({ id }) => {
-    return await Food.findOneAndRemove({ _id: id }).populate('category')
+  deleteFoodMenu: async ({ id }) => {
+    return await FoodMenu.findOneAndRemove({ _id: id }).populate('category')
   },
 }
 
