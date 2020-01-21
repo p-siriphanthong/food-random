@@ -1,27 +1,36 @@
-import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
+import React, { useState } from 'react'
+import { useApolloClient } from '@apollo/react-hooks'
+import { GET_FOOD_CATEGORIES } from './graphql'
 
-const GET_FOOD_CATEGORIES = gql`
-  {
-    getFoodCategories {
-      id
-      name
-    }
+const App = () => {
+  const client = useApolloClient()
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
+
+  const fetchData = async () => {
+    setLoading(true)
+    const { data } = await client.query({
+      query: GET_FOOD_CATEGORIES,
+      fetchPolicy: 'network-only',
+    })
+    setData(data.getFoodCategories)
+    setLoading(false)
   }
-`
 
-function App() {
-  const { loading, error, data } = useQuery(GET_FOOD_CATEGORIES)
-
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error</p>
-
-  return data.getFoodCategories.map(d => (
-    <div>
-      id: {d.id}, name: {d.name}
-    </div>
-  ))
+  return (
+    <>
+      <button onClick={fetchData}>click</button>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        data.map(d => (
+          <div key={d.id}>
+            id: {d.id}, name: {d.name}
+          </div>
+        ))
+      )}
+    </>
+  )
 }
 
 export default App
