@@ -16,7 +16,7 @@ query getFoodCategories {
 }
 
 mutation createFoodCategory {
-  createFoodCategory(name: "name 1") {
+  createFoodCategory(name: "Category 1") {
     ...foodCategoryField
   }
 }
@@ -24,7 +24,7 @@ mutation createFoodCategory {
 mutation updateFoodCategory {
   updateFoodCategory(
     id: "5e261d1a9e48a07454ba0d63",
-    name: "category 3"
+    name: "Category 2"
 	) {
     ...foodCategoryField
   }
@@ -58,6 +58,12 @@ query getFoodMenu {
 
 query getFoodMenus {
   getFoodMenus {
+    ...foodMenuField
+  }
+}
+
+query getRandomizedFoodMenu {
+  getRandomizedFoodMenu {
     ...foodMenuField
   }
 }

@@ -28,9 +28,16 @@ const resolvers = {
   getFoodMenus: async () => {
     return await FoodMenu.find().populate('category')
   },
+  getRandomizedFoodMenu: async ({ excluding_categories = [] }) => {
+    const food_menus = await FoodMenu.find({
+      category: { $nin: excluding_categories },
+    }).populate('category')
+    const random_index = Math.floor(Math.random() * food_menus.length)
+    return food_menus.length ? food_menus[random_index] : null
+  },
   createFoodMenu: async ({ input }) => {
-    const foodMenu = await FoodMenu.create(input)
-    return await FoodMenu.findOne({ _id: foodMenu.id }).populate('category')
+    const food_menu = await FoodMenu.create(input)
+    return await FoodMenu.findOne({ _id: food_menu.id }).populate('category')
   },
   updateFoodMenu: async ({ id, input }) => {
     await FoodMenu.findOneAndUpdate({ _id: id }, input)

@@ -28,6 +28,7 @@ const schema = buildSchema(`
     getFoodCategories: [FoodCategory]
     getFoodMenu(id: ID!): FoodMenu
     getFoodMenus: [FoodMenu]
+    getRandomizedFoodMenu(excluding_categories: [String]): FoodMenu
   }
 
   type Mutation {
