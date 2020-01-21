@@ -1,0 +1,92 @@
+fragment foodCategoryField on FoodCategory {
+  id
+  name
+}
+
+query getFoodCategory {
+  getFoodCategory(id: "5e261c8791983d740fc8ce18") {
+    ...foodCategoryField
+  }
+}
+
+query getFoodCategories {
+  getFoodCategories {
+    ...foodCategoryField
+  }
+}
+
+mutation createFoodCategory {
+  createFoodCategory(name: "name 1") {
+    ...foodCategoryField
+  }
+}
+
+mutation updateFoodCategory {
+  updateFoodCategory(
+    id: "5e261d1a9e48a07454ba0d63",
+    name: "name 3"
+	) {
+    ...foodCategoryField
+  }
+}
+
+mutation deleteFoodCategory {
+  deleteFoodCategory(id: "5e261d1a9e48a07454ba0d63") {
+    ...foodCategoryField
+  }
+}
+
+##########################################################
+
+fragment foodField on Food {
+  id
+  name
+  image
+  latitude
+  longitude
+  category {
+    id
+    name
+  }
+}
+
+query getFood {
+  getFood(id: "5e26251852f6fa77462fcad8") {
+		...foodField
+  }
+}
+
+query getFoods {
+  getFoods {
+    ...foodField
+  }
+}
+
+mutation createFood {
+  createFood(input: {
+    name: "Food 1",
+    image: "url...",
+    latitude: 111.11,
+    longitude: -222.22,
+    category: "5e261c8791983d740fc8ce18"
+  }) {
+    ...foodField
+  }
+}
+
+mutation updateFood {
+  updateFood(
+    id: "5e261ffbb019857647b9e1c3",
+    input: {
+      name: "Food 2"
+    }
+	) {
+    ...foodField
+  }
+}
+
+mutation deleteFood {
+  deleteFood(id: "5e261ffbb019857647b9e1c3") {
+    ...foodField
+  }
+}
