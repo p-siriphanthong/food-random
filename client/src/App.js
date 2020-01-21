@@ -7,14 +7,19 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
 
-  const fetchData = async () => {
-    setLoading(true)
-    const { data } = await client.query({
-      query: GET_FOOD_CATEGORIES,
-      fetchPolicy: 'network-only',
-    })
-    setData(data.getFoodCategories)
-    setLoading(false)
+  const fetchData = () => {
+    if (!loading) {
+      setLoading(true)
+      client
+        .query({
+          query: GET_FOOD_CATEGORIES,
+          fetchPolicy: 'network-only',
+        })
+        .then(({ data }) => {
+          setData(data.getFoodCategories)
+          setLoading(false)
+        })
+    }
   }
 
   return (
