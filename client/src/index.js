@@ -1,10 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from '@apollo/react-hooks'
 
 import AppComponent from './App'
 import * as serviceWorker from './serviceWorker'
+import theme from './theme'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+  }
+`
 
 const client = new ApolloClient({
   uri:
@@ -15,7 +24,10 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <AppComponent />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <AppComponent />
+    </ThemeProvider>
   </ApolloProvider>
 )
 
