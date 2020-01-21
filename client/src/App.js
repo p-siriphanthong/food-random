@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import { useApolloClient } from '@apollo/react-hooks'
-import { GET_FOOD_CATEGORIES } from './graphql'
+import { GET_RANDOMIZED_FOOD_MENU } from './graphql'
 
 const App = () => {
   const client = useApolloClient()
   const [loading, setLoading] = useState(false)
-  const [data, setData] = useState([])
+  const [food_menu, setFoodMenu] = useState(null)
 
-  const fetchData = () => {
+  const getFoodMenu = () => {
     if (!loading) {
       setLoading(true)
       client
         .query({
-          query: GET_FOOD_CATEGORIES,
+          query: GET_RANDOMIZED_FOOD_MENU,
+          variables: { excluding_categories: [] },
           fetchPolicy: 'network-only',
         })
         .then(({ data }) => {
-          setData(data.getFoodCategories)
+          setFoodMenu(data.food_menu)
           setLoading(false)
         })
     }
@@ -24,16 +25,15 @@ const App = () => {
 
   return (
     <>
-      <button onClick={fetchData}>click</button>
+      <button onClick={getFoodMenu}>click</button>
       {loading ? (
         <p>Loading...</p>
-      ) : (
-        data.map(d => (
-          <div key={d.id}>
-            id: {d.id}, name: {d.name}
-          </div>
-        ))
-      )}
+      ) : food_menu ? (
+        <div key={food_menu.id}>
+          id: {food_menu.id}, name: {food_menu.name}, category_id:{' '}
+          {food_menu.category.id}
+        </div>
+      ) : null}
     </>
   )
 }

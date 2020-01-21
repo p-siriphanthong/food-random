@@ -63,7 +63,7 @@ query getFoodMenus {
 }
 
 query getRandomizedFoodMenu {
-  getRandomizedFoodMenu {
+  getRandomizedFoodMenu(excluding_categories: []) {
     ...foodMenuField
   }
 }
