@@ -1,6 +1,6 @@
 # FoodRandom
 
-Job Applications Quiz of [Cleverse](https://cleverse.com/)
+Job applications quiz of [Cleverse](https://cleverse.com/)
 
 Try it online at [FoodRandom](https://food-random-cleverse.herokuapp.com/).
 
