@@ -1,0 +1,127 @@
+fragment restaurantField on Restaurant {
+  id
+  name
+  latitude
+  longitude
+}
+
+query getRestaurant($restaurantId: ID!) {
+  getRestaurant(id: $restaurantId) {
+    ...restaurantField
+  }
+}
+
+query getRestaurants {
+  getRestaurants {
+    ...restaurantField
+  }
+}
+
+mutation createRestaurant($restaurantInput: RestaurantInput!) {
+  createRestaurant(input: $restaurantInput) {
+    ...restaurantField
+  }
+}
+
+mutation updateRestaurant($restaurantId: ID!, $restaurantInput: RestaurantInput!) {
+  updateRestaurant(id: $restaurantId, input: $restaurantInput) {
+    ...restaurantField
+  }
+}
+
+mutation deleteRestaurant($restaurantId: ID!) {
+  deleteRestaurant(id: $restaurantId) {
+    ...restaurantField
+  }
+}
+
+#####################################################################################
+
+fragment foodCategoryField on FoodCategory {
+  id
+  name
+}
+
+query getFoodCategory($foodCategoryId: ID!) {
+  getFoodCategory(id: $foodCategoryId) {
+    ...foodCategoryField
+  }
+}
+
+query getFoodCategories {
+  getFoodCategories {
+    ...foodCategoryField
+  }
+}
+
+mutation createFoodCategory($foodCategoryName: String!) {
+  createFoodCategory(name: $foodCategoryName) {
+    ...foodCategoryField
+  }
+}
+
+mutation updateFoodCategory($foodCategoryId: ID!, $foodCategoryName: String!) {
+  updateFoodCategory(id: $foodCategoryId, name: $foodCategoryName) {
+    ...foodCategoryField
+  }
+}
+
+mutation deleteFoodCategory($foodCategoryId: ID!) {
+  deleteFoodCategory(id: $foodCategoryId) {
+    ...foodCategoryField
+  }
+}
+
+#####################################################################################
+
+fragment foodMenuField on FoodMenu {
+  id
+  name
+  image
+  category {
+    id
+    name
+  }
+  restaurants {
+    id
+    name
+    latitude
+    longitude
+  }
+}
+
+query getFoodMenu($foodMenuId: ID!) {
+  getFoodMenu(id: $foodMenuId) {
+    ...foodMenuField
+  }
+}
+
+query getFoodMenus {
+  getFoodMenus {
+    ...foodMenuField
+  }
+}
+
+query getRandomizedFoodMenu($excludingCategories: [String]!) {
+  getRandomizedFoodMenu(excluding_categories: $excludingCategories) {
+    ...foodMenuField
+  }
+}
+
+mutation createFoodMenu($foodMenuInput: FoodMenuInput!) {
+  createFoodMenu(input: $foodMenuInput) {
+    ...foodMenuField
+  }
+}
+
+mutation updateFoodMenu($foodMenuId: ID!, $foodMenuInput: FoodMenuInput!) {
+  updateFoodMenu(id: $foodMenuId, input: $foodMenuInput) {
+    ...foodMenuField
+  }
+}
+
+mutation deleteFoodMenu($foodMenuId: ID!) {
+  deleteFoodMenu(id: $foodMenuId) {
+    ...foodMenuField
+  }
+}

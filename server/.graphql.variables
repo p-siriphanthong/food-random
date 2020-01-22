@@ -1,0 +1,20 @@
+{
+  "restaurantId": "restaurantId",
+  "restaurantInput": {
+    "name": "Restaurant 1",
+    "latitude": 111.11,
+    "longitude": -222.22
+  },
+  
+  "foodCategoryId": "foodCategoryId",
+  "foodCategoryName": "Food Category 1",
+  
+  "foodMenuId": "foodMenuId",
+  "foodMenuInput": {
+    "name": "Food Menu 1",
+    "image": "imageURL",
+    "category": "foodCategoryId",
+    "restaurants": []
+  },
+  "excludingCategories": []
+}
