@@ -2,8 +2,8 @@
   "restaurantId": "restaurantId",
   "restaurantInput": {
     "name": "Restaurant 1",
-    "latitude": 111.11,
-    "longitude": -222.22
+    "latitude": 13.762755,
+    "longitude": 100.526940
   },
   
   "foodCategoryId": "foodCategoryId",

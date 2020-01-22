@@ -1,10 +1,36 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
-const MapComponent = ({ google }) => {
+const Title = styled.div`
+  color: ${props => props.theme.color.dark};
+  background-color: ${props => props.theme.color.primary};
+  border-bottom-right-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  width: fit-content;
+  padding: 10px 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+`
+
+const Tooltip = styled.div`
+  color: black;
+  font-size: 18px;
+  padding: 0 10px;
+`
+
+const MapComponent = ({ google, markers }) => {
   const [activeMarker, setActiveMarker] = useState(null)
   const [selectedPlace, setSelectedPlace] = useState({})
   const [showingInfoWindow, setShowingInfoWindow] = useState(false)
+
+  const initialCenter = { lat: 13.762755, lng: 100.52694 }
+  const zoom = 13
 
   const onMarkerClick = (props, marker) => {
     setActiveMarker(marker)
@@ -24,27 +50,30 @@ const MapComponent = ({ google }) => {
   }
 
   return (
-    <Map google={google} onClick={onMapClicked}>
-      <Marker
-        name='SOMA'
-        onClick={onMarkerClick}
-        position={{ lat: 37.778519, lng: -122.40564 }}
-      />
-      <Marker
-        name='Dolores park'
-        onClick={onMarkerClick}
-        position={{ lat: 37.759703, lng: -122.428093 }}
-      />
-      <InfoWindow
-        marker={activeMarker}
-        onClose={onInfoWindowClose}
-        visible={showingInfoWindow}
+    <>
+      <Title>Restaurants</Title>
+      <Map
+        google={google}
+        onClick={onMapClicked}
+        initialCenter={initialCenter}
+        zoom={zoom}
       >
-        <div>
-          <h1>{selectedPlace.name}</h1>
-        </div>
-      </InfoWindow>
-    </Map>
+        {markers.map(marker => (
+          <Marker
+            name={marker.name}
+            onClick={onMarkerClick}
+            position={{ lat: marker.latitude, lng: marker.longitude }}
+          />
+        ))}
+        <InfoWindow
+          marker={activeMarker}
+          onClose={onInfoWindowClose}
+          visible={showingInfoWindow}
+        >
+          <Tooltip>{selectedPlace.name}</Tooltip>
+        </InfoWindow>
+      </Map>
+    </>
   )
 }
 

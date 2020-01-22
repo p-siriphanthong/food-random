@@ -94,7 +94,7 @@ const Button = styled.div`
 const ResultPage = ({ foodMenu, excludingCategories, fetchFoodMenu }) => (
   <Wrapper>
     <MapWrapper>
-      <Map />
+      <Map markers={foodMenu.restaurants} />
     </MapWrapper>
     <DetailsWrapper>
       <FoodName>{foodMenu.name}</FoodName>

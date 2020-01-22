@@ -7,11 +7,14 @@ export const GET_RANDOMIZED_FOOD_MENU = gql`
     ) {
       name
       image
-      latitude
-      longitude
       category {
         id
         name
+      }
+      restaurants {
+        name
+        latitude
+        longitude
       }
     }
   }
