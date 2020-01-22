@@ -33,7 +33,7 @@ In the root directory, you can run:
 
 Runs both client and sever side in developer mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view the client side in the browser.<br>
-Open [http://localhost:5000](http://localhost:5000) to view the server side in the browser.
+Open [http://localhost:5000/graphql](http://localhost:5000) to view the server side in the browser.
 
 ### `npm run client`
 
@@ -44,4 +44,4 @@ Open [http://localhost:3000](http://localhost:3000) to view the client side in t
 ### `npm run server`
 
 Runs only server side in developer mode.<br>
-Open [http://localhost:5000](http://localhost:5000) to view the server side in the browser.
+Open [http://localhost:5000/graphql](http://localhost:5000) to view the server side in the browser.
