@@ -1,6 +1,5 @@
 const path = require('path')
 const cors = require('cors')
-const dotenv = require('dotenv')
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -8,8 +7,6 @@ const graphqlHTTP = require('express-graphql')
 
 const schema = require('./schema')
 const resolvers = require('./resolvers')
-
-dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 5000
