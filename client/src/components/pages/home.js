@@ -17,7 +17,6 @@ const ring = keyframes`
 
 const Wrapper = styled.div`
   height: 100vh;
-  background-color: ${props => props.theme.color.dark};
   background-image: url('/images/background.png');
   background-size: contain;
   background-position: center;
@@ -35,9 +34,9 @@ const Button = styled.div`
     ${props => hexToRgba(props.theme.color.primary, 0.25)};
   border-radius: 1000px;
   font-size: 22px;
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1.3px;
-  font-weight: bold;
   width: 300px;
   height: 60px;
   padding: 10px;

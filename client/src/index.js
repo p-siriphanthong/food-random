@@ -9,7 +9,13 @@ import * as serviceWorker from './serviceWorker'
 import theme from './theme'
 
 const GlobalStyle = createGlobalStyle`
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
   body {
+    color: white;
+    background-color: ${props => props.theme.color.dark};
     font-family: 'Nunito', sans-serif;
     margin: 0;
   }

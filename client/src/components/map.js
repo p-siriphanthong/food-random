@@ -24,7 +24,7 @@ const MapComponent = ({ google }) => {
   }
 
   return (
-    <Map google={google} onClick={onMapClicked} zoom={14}>
+    <Map google={google} onClick={onMapClicked}>
       <Marker
         name='SOMA'
         onClick={onMarkerClick}

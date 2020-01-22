@@ -5,7 +5,6 @@ export const GET_RANDOMIZED_FOOD_MENU = gql`
     foodMenu: getRandomizedFoodMenu(
       excluding_categories: $excluding_categories
     ) {
-      id
       name
       image
       latitude
