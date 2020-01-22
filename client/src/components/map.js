@@ -1,8 +1,5 @@
-import dotenv from 'dotenv'
 import React, { useState } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
-
-dotenv.config()
 
 const MapComponent = ({ google }) => {
   const [activeMarker, setActiveMarker] = useState(null)
@@ -26,8 +23,6 @@ const MapComponent = ({ google }) => {
     }
   }
 
-  console.log(process.env)
-  
   return (
     <Map google={google} onClick={onMapClicked} zoom={14}>
       <Marker
@@ -54,5 +49,5 @@ const MapComponent = ({ google }) => {
 }
 
 export default GoogleApiWrapper({
-  apiKey: process.env.GOOGLE_MAP_API_KEY,
+  apiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
 })(MapComponent)
