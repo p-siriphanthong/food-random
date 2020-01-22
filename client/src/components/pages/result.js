@@ -1,5 +1,6 @@
 import React from 'react'
+import Map from '../map'
 
-const ResultPage = ({ food_menu }) => <h1>{food_menu.name}</h1>
+const ResultPage = ({ FoodMenu }) => <Map />
 
 export default ResultPage

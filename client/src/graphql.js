@@ -2,7 +2,7 @@ import { gql } from 'apollo-boost'
 
 export const GET_RANDOMIZED_FOOD_MENU = gql`
   query getRandomizedFoodMenu($excluding_categories: [String]) {
-    food_menu: getRandomizedFoodMenu(
+    foodMenu: getRandomizedFoodMenu(
       excluding_categories: $excluding_categories
     ) {
       id

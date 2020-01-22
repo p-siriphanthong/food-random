@@ -9,7 +9,7 @@ import ResultPage from './components/pages/result'
 const App = () => {
   const client = useApolloClient()
   const [loading, setLoading] = useState(false)
-  const [food_menu, setFoodMenu] = useState(null)
+  const [foodMenu, setFoodMenu] = useState(null)
 
   const fetchFoodMenu = () => {
     if (!loading) {
@@ -22,7 +22,7 @@ const App = () => {
         })
         .then(({ data }) => {
           setTimeout(() => {
-            setFoodMenu(data.food_menu)
+            setFoodMenu(data.foodMenu)
             setLoading(false)
           }, 300)
         })
@@ -31,9 +31,9 @@ const App = () => {
 
   return (
     <>
-      <Loading loading={loading} />
-      {food_menu ? (
-        <ResultPage food_menu={food_menu} />
+      <Loading isLoading={loading} />
+      {foodMenu ? (
+        <ResultPage foodMenu={foodMenu} />
       ) : (
         <HomePage fetchFoodMenu={fetchFoodMenu} />
       )}

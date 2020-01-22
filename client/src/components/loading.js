@@ -28,9 +28,9 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: ${props => (props.loading ? 99 : -1)};
-  opacity: ${props => (props.loading ? 1 : 0)};
-  transition: ${props => (props.loading ? 'none' : 'all 1s ease-in-out')};
+  z-index: ${props => (props.isLoading ? 99 : -1)};
+  opacity: ${props => (props.isLoading ? 1 : 0)};
+  transition: ${props => (props.isLoading ? 'none' : 'all 1s ease-in-out')};
 `
 
 const Ripple = styled.div`
@@ -52,9 +52,9 @@ const Ripple = styled.div`
   }
 `
 
-const Loading = ({ loading }) => {
+const LoadingComponent = ({ isLoading }) => {
   return (
-    <Wrapper loading={loading}>
+    <Wrapper isLoading={isLoading}>
       <Ripple>
         <div></div>
         <div></div>
@@ -63,4 +63,4 @@ const Loading = ({ loading }) => {
   )
 }
 
-export default Loading
+export default LoadingComponent
