@@ -5,16 +5,18 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 const Title = styled.div`
   color: ${props => props.theme.color.dark};
   background-color: ${props => props.theme.color.primary};
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 1.3px;
-  width: fit-content;
-  padding: 10px 30px;
+  width: 200px;
+  padding: 10px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: calc(50% - 100px);
   z-index: 9;
 `
 
