@@ -91,7 +91,7 @@ const Button = styled.div`
   }
 `
 
-const ResultPage = ({ foodMenu }) => (
+const ResultPage = ({ foodMenu, excludingCategories, fetchFoodMenu }) => (
   <Wrapper>
     <MapWrapper>
       <Map />
@@ -102,8 +102,15 @@ const ResultPage = ({ foodMenu }) => (
       <FoodImage src={foodMenu.image} />
       <div style={{ flex: 1 }} />
       <ButtonWrapper>
-        <Button border>No {foodMenu.category.name}, please</Button>
-        <Button>Random Again !</Button>
+        <Button
+          border
+          onClick={() =>
+            fetchFoodMenu([...excludingCategories, foodMenu.category.id])
+          }
+        >
+          No {foodMenu.category.name}, please
+        </Button>
+        <Button onClick={() => fetchFoodMenu()}>Random Again !</Button>
       </ButtonWrapper>
     </DetailsWrapper>
   </Wrapper>

@@ -76,7 +76,7 @@ const Button = styled.div`
 
 const HomePage = ({ fetchFoodMenu }) => (
   <Wrapper>
-    <Button onClick={fetchFoodMenu}>What to Eat?</Button>
+    <Button onClick={() => fetchFoodMenu([])}>What to Eat?</Button>
   </Wrapper>
 )
 

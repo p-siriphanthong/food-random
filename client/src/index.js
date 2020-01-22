@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from '@apollo/react-hooks'
+import 'react-notifications/lib/notifications.css'
 
 import AppComponent from './App'
 import * as serviceWorker from './serviceWorker'
